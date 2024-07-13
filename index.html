@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Monitor Client</title>
+</head>
+<body>
+    <h1>WebSocket Monitor Client</h1>
+    <pre id="output"></pre>
+
+    <script>
+        // WebSocket URL
+        const wsUri = "ws://localhost:6789/monitor";
+        const output = document.getElementById("output");
+
+        function logMessage(message) {
+            output.textContent += message + '\n';
+        }
+
+        function initWebSocket() {
+            const websocket = new WebSocket(wsUri);
+
+            websocket.onopen = function(evt) {
+                logMessage("Connected to WebSocket server");
+            };
+
+            websocket.onmessage = function(evt) {
+                const message = JSON.parse(evt.data);
+                logMessage(`From Phone: ${message.from_phone}, Question: ${message.question}, Answer: ${message.answer}`);
+            };
+
+            websocket.onerror = function(evt) {
+                logMessage(`Error: ${evt.data}`);
+            };
+
+            websocket.onclose = function(evt) {
+                logMessage("Disconnected from WebSocket server");
+            };
+        }
+
+        window.onload = initWebSocket;
+    </script>
+</body>
+</html>
