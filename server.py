@@ -62,7 +62,7 @@ async def conversation_handler(websocket, path):
             if identifier in connected_clients:
                 del connected_clients[identifier]
 
-start_server = websockets.serve(conversation_handler, '0.0.0.0', 6789)
+start_server = websockets.serve(conversation_handler, '0.0.0.0', 80)
 print('SERVER STARTED')
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
