@@ -15,6 +15,7 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-EXPOSE 80
+EXPOSE 6789
+
 
 CMD bash -c "supervisord -c supervisord.conf"
