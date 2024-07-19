@@ -3,7 +3,7 @@ import websockets
 import json
 
 async def send_payload():
-    uri = 'ws://localhost:6789'
+    uri = 'ws://ecc-ws-server.onecenter.ai/' #'ws://localhost:6789'
     identifier = 'test_client'
 
     async with websockets.connect(uri) as websocket:
