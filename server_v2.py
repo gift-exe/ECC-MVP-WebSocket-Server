@@ -111,6 +111,7 @@ async def handler(websocket, path):
 
 
 if __name__ == '__main__':
-    server = websockets.serve(handler, '0.0.0.0', 6789)
+    port = int(os.getenv('PORT'))
+    server = websockets.serve(handler, '0.0.0.0', port)
     asyncio.get_event_loop().run_until_complete(server)
     asyncio.get_event_loop().run_forever()
