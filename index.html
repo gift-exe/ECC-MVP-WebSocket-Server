@@ -9,8 +9,9 @@
 
     <script>
         // WebSocket URL
-        const wsUri = "ws://ecc-ws-server.onecenter.ai/monitor";
+        const wsUri = 'ws://localhost:6789/monitor'; //"ws://ecc-ws-server.onecenter.ai/monitor";
         const output = document.getElementById("output");
+        const identifier = 'monitor_1'
 
         function logMessage(message) {
             output.textContent += message + '\n';
@@ -20,12 +21,14 @@
             const websocket = new WebSocket(wsUri);
 
             websocket.onopen = function(evt) {
+                websocket.send(identifier)
                 logMessage("Connected to WebSocket server");
             };
 
             websocket.onmessage = function(evt) {
                 const message = JSON.parse(evt.data);
-                logMessage(`From Phone: ${message.from_phone}, Question: ${message.question}, Answer: ${message.answer}`);
+                console.log(message.message)
+                logMessage(`From Phone: ${message.message.from_phone}, Question: ${message.message.question}, Answer: ${message.message.answer}`);
             };
 
             websocket.onerror = function(evt) {

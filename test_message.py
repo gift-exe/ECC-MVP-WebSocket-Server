@@ -3,7 +3,7 @@ import websockets
 import json
 
 async def send_payload():
-    uri = 'ws://ecc-ws-server.onecenter.ai/' #'ws://localhost:6789'
+    uri = 'ws://localhost:6789/client' #'ws://ecc-ws-server.onecenter.ai/'
     identifier = 'test_client'
 
     async with websockets.connect(uri) as websocket:
@@ -26,4 +26,4 @@ async def send_payload():
         print(f"Received from server: {response}")
 
 # Run the test
-asyncio.get_event_loop().run_until_complete(send_payload())
+asyncio.run(send_payload())
