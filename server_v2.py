@@ -109,7 +109,6 @@ async def handler(websocket, path):
     else:
         await websocket.close()
 
-
 if __name__ == '__main__':
     port = int(os.getenv('PORT'))
     server = websockets.serve(handler, '0.0.0.0', port)
