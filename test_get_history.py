@@ -1,10 +1,14 @@
 import asyncio
 import websockets
 import json
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 async def get_history():
-    uri = 'ws://localhost:6789/history'
+    uri = f'{os.getenv('WS_URL')}/history'
     identifier = 'test_client'
 
     async with websockets.connect(uri) as websocket:
