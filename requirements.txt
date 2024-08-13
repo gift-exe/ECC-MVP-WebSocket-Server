@@ -34,7 +34,6 @@ cryptography==41.0.3
 dataclasses-json==0.5.14
 dbus-python==1.2.18
 decorator==5.1.1
-defer==1.0.6
 distro==1.7.0
 distro-info===1.1build1
 dnspython==2.4.2
