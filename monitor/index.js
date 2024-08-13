@@ -19,6 +19,8 @@ function initWebSocket() {
     };
 
     websocket.onmessage = function(evt) {
+        console.log("New Message from server")
+        console.log(evt)
         const message = JSON.parse(evt.data);
         console.log(message.message)
         logMessage(`From Phone: ${message.message.from_phone}, Question: ${message.message.question}, Answer: ${message.message.answer}`);
