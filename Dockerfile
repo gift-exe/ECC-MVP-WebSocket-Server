@@ -2,7 +2,6 @@ FROM python:3.10-slim
 
 # Install supervisor
 RUN apt-get update && apt-get install -y supervisor
-RUN apt-get install -y apparmor apturl && pip install -r requirements.txt
 
 RUN mkdir app
 
