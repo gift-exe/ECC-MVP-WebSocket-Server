@@ -31,7 +31,6 @@ colorama==0.4.4
 constantly==15.1.0
 contextlib2==21.6.0
 cryptography==41.0.3
-cupshelpers==1.0
 dataclasses-json==0.5.14
 dbus-python==1.2.18
 decorator==5.1.1
