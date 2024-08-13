@@ -34,7 +34,7 @@ async def store_message_v2(redis, client_id:str, message_data):
     client_exists = await redis.hexists(CLIENT_KEY, client_id)
     if not client_exists:
         # Register the client if it doesn't exist
-        await register_client(redis, client_id, message_data.from_phone)
+        await register_client(redis, client_id, message_data['from_phone'])
     await redis.rpush(f'{MESSAGE_HISTORY_KEY}:{client_id}', json.dumps(message_data))
     return True
 
