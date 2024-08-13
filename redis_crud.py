@@ -9,7 +9,7 @@ CLIENT_KEY = 'clients'
 MONITOR_KEY = 'monitors'
 MESSAGE_HISTORY_KEY = 'message_history'
 
-REDIS_URL = os.getenv('LOCAL_REDIS_URL')
+REDIS_URL = os.getenv('REDIS_URL')
 
 
 async def get_redis_connection():
