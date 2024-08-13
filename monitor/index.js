@@ -6,7 +6,7 @@ function logMessage(message) {
 }
 
 function initWebSocket() {
-    const websocket = new WebSocket('ws://localhost:6789/monitor');
+    const websocket = new WebSocket('ws://ecc-ws-server.onecenter.ai/monitor');
 
     websocket.onopen = function(evt) {
         try {
