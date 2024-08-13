@@ -86,7 +86,7 @@ async def monitor_client_handler(websocket: WebSocket):
         res = {'message':f'an error occured with monitor client with id: {monitor_id}', 'error': str(e)}
         await websocket.send_text(json.dumps(res))
     
-@app.get('history/{client_id}')
+@app.get('/history/{client_id}')
 async def message_history_handler(client_id: str):
     redis = await get_redis_connection()
     history = await get_message_history(redis, client_id)
