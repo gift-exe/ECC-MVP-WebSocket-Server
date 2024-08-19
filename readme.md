@@ -1,7 +1,7 @@
-## Steps to run the server
+## Steps to run the server locally
 ---
 #### Step 1: Create Virtual Environment:
-`$ python -m venv ws-env`
+`$ python3.10 -m venv ws-env`
 
 #### Step 2: Acitivate Virtual Environment:
 `$ source ws-env/bin/activate`
@@ -10,7 +10,7 @@
 `(ws-env) $ pip install -r requirements.txt`
 
 #### Step 4: Run Server (version 2):
-`(ws-env) $ python server_v2.py`
+`(ws-env) $ uvicorn server_v3:app --reload
 
 ## Endpoints
 ---

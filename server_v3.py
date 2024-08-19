@@ -58,6 +58,8 @@ async def client_handler_webhook(payload: schema.ClientPayload):
         'client_id': client_id,
         'message': payload
     }))
+
+    await redis.close()
     return {"status": "message sent"}
 
 @app.websocket('/monitor')
