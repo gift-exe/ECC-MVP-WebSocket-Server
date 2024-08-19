@@ -95,6 +95,13 @@ async def message_history_handler(client_id: str):
     await redis.close()
     return JSONResponse(content=history)
 
+@app.get('/history/')
+async def get_all_calls():
+    redis = await get_redis_connection()
+    history = await get_call_history(redis)
+    await redis.close()
+    return JSONResponse(content=history)
+
 
 if __name__ == '__main__':
     import uvicorn

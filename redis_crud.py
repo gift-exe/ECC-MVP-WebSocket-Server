@@ -2,6 +2,7 @@ import aioredis
 import os
 from dotenv import load_dotenv
 import json
+from aioredis.client import Redis
 
 load_dotenv()
 
@@ -40,3 +41,6 @@ async def store_message_v2(redis, client_id:str, message_data):
 
 async def get_message_history(redis, client_id:str):
     return await redis.lrange(f'{MESSAGE_HISTORY_KEY}:{client_id}', 0, -1)
+
+async def get_call_history(redis: Redis):
+    return await redis.hgetall(f'{CLIENT_KEY}')
