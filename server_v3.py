@@ -98,7 +98,12 @@ async def message_history_handler(client_id: str):
 @app.get('/history/')
 async def get_all_calls():
     redis = await get_redis_connection()
-    history = await get_call_history(redis)
+    history_raw = await get_call_history(redis)
+
+    print(history_raw.values())
+    history = [json.loads(call) for call in history_raw.values()]
+
+
     await redis.close()
     return JSONResponse(content=history)
 

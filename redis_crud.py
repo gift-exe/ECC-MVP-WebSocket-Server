@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 import json
 from aioredis.client import Redis
+import datetime
 
 load_dotenv()
 
@@ -16,8 +17,12 @@ REDIS_URL = os.getenv('REDIS_URL')
 async def get_redis_connection():
     return await aioredis.from_url(REDIS_URL, decode_responses=True)
 
-async def register_client(redis, client_id:str, phone_number):
-    await redis.hset(CLIENT_KEY, client_id, phone_number)
+async def register_client(redis: Redis, client_id:str, phone_number):
+    dt = str(datetime.datetime.now())
+    d = dt.split()[0]
+    t = dt.split()[1]
+    data = {'client_id':client_id, 'phone_number':phone_number, 'date':d, 'time':t}
+    await redis.hset(CLIENT_KEY, client_id, json.dumps(data))
 
 async def unregister_client(redis, client_id:str):
     await redis.hdel(CLIENT_KEY, client_id)
