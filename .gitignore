@@ -1,2 +1,3 @@
 /ecc-ws/
 .env
+*.log
