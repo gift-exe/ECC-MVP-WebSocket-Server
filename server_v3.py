@@ -92,6 +92,7 @@ async def monitor_client_handler(websocket: WebSocket):
 async def message_history_handler(client_id: str):
     redis = await get_redis_connection()
     history = await get_message_history(redis, client_id)
+    history = [json.loads(message) for message in history]
     await redis.close()
     return JSONResponse(content=history)
 

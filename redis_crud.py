@@ -12,6 +12,9 @@ MONITOR_KEY = 'monitors'
 MESSAGE_HISTORY_KEY = 'message_history'
 
 REDIS_URL = os.getenv('REDIS_URL')
+print(REDIS_URL)
+print(len(REDIS_URL))
+print(len(REDIS_URL.strip('')))
 
 
 async def get_redis_connection():
@@ -44,7 +47,7 @@ async def store_message_v2(redis, client_id:str, message_data):
     await redis.rpush(f'{MESSAGE_HISTORY_KEY}:{client_id}', json.dumps(message_data))
     return True
 
-async def get_message_history(redis, client_id:str):
+async def get_message_history(redis:Redis, client_id:str):
     return await redis.lrange(f'{MESSAGE_HISTORY_KEY}:{client_id}', 0, -1)
 
 async def get_call_history(redis: Redis):
