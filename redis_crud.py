@@ -12,9 +12,6 @@ MONITOR_KEY = 'monitors'
 MESSAGE_HISTORY_KEY = 'message_history'
 
 REDIS_URL = os.getenv('REDIS_URL')
-print(REDIS_URL)
-print(len(REDIS_URL))
-print(len(REDIS_URL.strip('')))
 
 
 async def get_redis_connection():
